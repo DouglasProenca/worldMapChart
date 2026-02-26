@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>br.worldMapChart</groupId>
+	<artifactId>worldMapChart</artifactId>
+	<description>Projeto para geracao de gráfico de Mapa de exposicao por Pais</description>
+	<packaging>jar</packaging>
+	<version>1.0.0</version>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven-plugin.version>3.6.0</maven-plugin.version>
+		<xmlgraphics.version>1.17</xmlgraphics.version>
+	</properties>
+
+	<dependencies>		
+		<!-- Xmlgraphics -->
+		<dependency>
+    		<groupId>org.apache.xmlgraphics</groupId>
+    		<artifactId>batik-transcoder</artifactId>
+    		<version>${xmlgraphics.version}</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.apache.xmlgraphics</groupId>
+    		<artifactId>batik-awt-util</artifactId>
+    		<version>${xmlgraphics.version}</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.apache.xmlgraphics</groupId>
+    		<artifactId>batik-dom</artifactId>
+    		<version>${xmlgraphics.version}</version>
+	   </dependency>
+		<dependency>
+    		<groupId>org.apache.xmlgraphics</groupId>
+    		<artifactId>batik-codec</artifactId>
+    		<version>${xmlgraphics.version}</version>
+		</dependency>
+    </dependencies>
+
+	<build>
+		<finalName>worldMapChart</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>${maven-plugin.version}</version>
+				<configuration>
+					<createDependencyReducedPom>false</createDependencyReducedPom>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
